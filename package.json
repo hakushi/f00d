@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "next -- -p 3366",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postversion": "git push --tags"
   }
 }
