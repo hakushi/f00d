@@ -38,11 +38,15 @@ const Index = () => {
     setFood(foodData[newIndex]);
   };
 
+  const updateHeight = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      window.removeEventListener("resize", updateHeight, true);
+    };
   }, []);
 
   const handlers = { yes: handleYesButtonClick, no: handleNoButtonClick };
