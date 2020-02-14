@@ -37,13 +37,22 @@ const Index = () => {
   console.log(bought);
   return (
     <>
-      <style global>{`html, body {
-    margin: 0; padding: 0; border: 0;
-    background-color: #000;
-} h1 {
-    font-size: 64px;
-    color #fff;
-}`}</style>
+      <style global>{`
+        html, body {
+          margin: 0; padding: 0; border: 0;
+          background-color: #000;
+        }
+        h1 {
+          font-size: 4rem;
+          color #fff;
+        }
+        @media screen and (max-width: 600px) {
+          h1 {
+            font-size: 2em;
+          }   
+        }
+        
+      `}</style>
       <style jsx>{`
         .wrapper {
             color #fff;
@@ -60,6 +69,14 @@ const Index = () => {
             flex-direction: row;
             width: 70vw;
         }
+        @media screen and (max-width: 600px) {
+          .button-group {
+            width: 100vw;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+        
         .button {
           height: 80px;
           padding: 10px;
@@ -72,14 +89,23 @@ const Index = () => {
           border-radius: 8px;
           outline: none;
           background-color: #992680;
-          color: #f5d3ed;
-
+          color: #fff;
+        }
+        @media screen and (max-width: 600px) {
+          .button {
+            width: 90vw;
+            font-size: 1.5rem;
+          }
         }
         .yes-button {
             background-color: #0bb04f
         }
         .yes-button:hover, .yes-button:active {
             background-color: #0dd15e;
+        }
+        .yes-button:disabled {
+          color: #333;
+          background-color: rgba(13,209,94, .1);
         }
         .no-button {
             background-color: #820719
@@ -93,18 +119,42 @@ const Index = () => {
             height: 400px;
             max-width: 400px;
         }
+        @media screen and (max-width: 600px) {
+          .imageWrapper {
+            width: 90vw;
+          }
+        }
         .image {
             width: 100%;
         }
         .name {
-            font-size: 36px;
+          text-align: center;
+          width: 90vw;
+          font-size: 2.5rem;
         }
+
+        @media screen and (max-width: 600px) {
+          .name {
+            font-size: 1.5rem
+          }
+        }
+        
         .list {
             font-size: 24px;
-            list-style-type: none;
-            display: flex;
-            flex-direction:row;
             width: 400px;
+            list-style-type: none;
+            flex-direction:row;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+        @media screen and (max-width: 600px) {
+          .list {
+            width: 90vw;
+            display: inline-flex;
+            flex-wrap: wrap;
+            padding: 0;
+          }
         }
         .list-item {
             margin: 2
@@ -114,6 +164,8 @@ const Index = () => {
             padding: 8px 12px;
             border-radius: 6px;
             cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
         }
         .list-item:hover {
             background-color: #2a63a1;
@@ -153,7 +205,11 @@ const Index = () => {
           </div>
         )}
         <div className="button-group">
-          <button className="button yes-button" onClick={handleYesButtonClick}>
+          <button
+            className="button yes-button"
+            disabled={!food.list}
+            onClick={handleYesButtonClick}
+          >
             Visa inköpslista 👍
           </button>
           <button className="button no-button" onClick={handleNoButtonClick}>
