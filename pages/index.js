@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Buttons from "../components/Buttons/Buttons";
 
 import foodData from "../data";
 
@@ -11,6 +12,8 @@ const Index = () => {
   const [food, setFood] = useState(foodData[index]);
   const [showList, setShowList] = useState(false);
   const [bought, setBought] = useState([]);
+
+  const hasShoppingList = !!food.list;
 
   const handleItemClick = item => {
     if (bought.includes(item)) {
@@ -34,13 +37,15 @@ const Index = () => {
     setIndex(newIndex);
     setFood(foodData[newIndex]);
   };
-  console.log(bought);
+
+  const handlers = { yes: handleYesButtonClick, no: handleNoButtonClick };
   return (
     <>
       <style global>{`
         html, body {
           margin: 0; padding: 0; border: 0;
           background-color: #000;
+          height: 100vh;
         }
         h1 {
           font-size: 4rem;
@@ -51,73 +56,25 @@ const Index = () => {
             font-size: 2em;
           }   
         }
-        
       `}</style>
       <style jsx>{`
         .wrapper {
-            color #fff;
-            font-family: lato, verdana;
-
+          color #fff;
+          font-family: lato, verdana;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
           height: 100vh;
         }
-        .button-group {
-            display: flex;
-            flex-direction: row;
-            width: 70vw;
-        }
-        @media screen and (max-width: 600px) {
-          .button-group {
-            width: 100vw;
-            flex-direction: column;
-            align-items: center;
-          }
-        }
         
-        .button {
-          height: 80px;
-          padding: 10px;
-          margin: 10px;
-          width: 50vw;
-          font-size: 36px;
-          font-family: lato, verdana;
-          cursor: pointer;
-          border: 0;
-          border-radius: 8px;
-          outline: none;
-          background-color: #992680;
-          color: #fff;
-        }
-        @media screen and (max-width: 600px) {
-          .button {
-            width: 90vw;
-            font-size: 1.5rem;
-          }
-        }
-        .yes-button {
-            background-color: #0bb04f
-        }
-        .yes-button:hover, .yes-button:active {
-            background-color: #0dd15e;
-        }
-        .yes-button:disabled {
-          color: #333;
-          background-color: rgba(13,209,94, .1);
-        }
-        .no-button {
-            background-color: #820719
-        }
-        .no-button:hover, .no-button:active {
-            background-color:#a80820
-        }
         .imageWrapper {
             display: flex;
             align-items: center;
             height: 400px;
             max-width: 400px;
+            max-height: 40vh;
+            overflow: hidden;
         }
         @media screen and (max-width: 600px) {
           .imageWrapper {
@@ -204,18 +161,7 @@ const Index = () => {
             </ul>
           </div>
         )}
-        <div className="button-group">
-          <button
-            className="button yes-button"
-            disabled={!food.list}
-            onClick={handleYesButtonClick}
-          >
-            Visa inköpslista 👍
-          </button>
-          <button className="button no-button" onClick={handleNoButtonClick}>
-            Nej tack 😬
-          </button>
-        </div>
+        <Buttons hasList={hasShoppingList} handlers={handlers} />
       </div>
     </>
   );
