@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Buttons from "../components/Buttons/Buttons";
 
 import foodData from "../data";
@@ -37,6 +37,13 @@ const Index = () => {
     setIndex(newIndex);
     setFood(foodData[newIndex]);
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  }, []);
 
   const handlers = { yes: handleYesButtonClick, no: handleNoButtonClick };
   return (
