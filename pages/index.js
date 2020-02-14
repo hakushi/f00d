@@ -172,7 +172,11 @@ const Index = () => {
             </ul>
           </div>
         )}
-        <Buttons hasList={hasShoppingList} handlers={handlers} />
+        <Buttons
+          hasShoppingList={hasShoppingList}
+          showList={showList}
+          handlers={handlers}
+        />
       </div>
     </>
   );

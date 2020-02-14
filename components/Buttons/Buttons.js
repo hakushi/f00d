@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 
-const Buttons = ({ hasList, handlers }) => {
+const Buttons = ({ hasShoppingList, showList, handlers }) => {
   const { yes, no } = handlers;
   return (
     <>
@@ -10,6 +10,7 @@ const Buttons = ({ hasList, handlers }) => {
             display: flex;
             flex-direction: row;
             width: 70vw;
+            justify-content: center;
           }
           @media screen and (max-width: 600px) {
             .button-group {
@@ -21,12 +22,14 @@ const Buttons = ({ hasList, handlers }) => {
         `}
       </style>
       <div className="button-group">
-        <Button
-          text="Visa inköpslista 👍"
-          className="yes-button"
-          handler={yes}
-          disabled={!hasList}
-        />
+        {!showList && (
+          <Button
+            text="Visa inköpslista 👍"
+            className="yes-button"
+            handler={yes}
+            disabled={!hasShoppingList}
+          />
+        )}
         <Button
           text="Nej tack 😬"
           type="no"
