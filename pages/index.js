@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Buttons from "../components/Buttons/Buttons";
+import RecipieLink from "../components/RecipieLink/RecipieLink";
 
 import foodData from "../data";
 
@@ -14,6 +15,7 @@ const Index = () => {
   const [bought, setBought] = useState([]);
 
   const hasShoppingList = !!food.list;
+  const showRecipieLink = !!food.url && showList;
 
   const handleItemClick = item => {
     if (bought.includes(item)) {
@@ -76,7 +78,7 @@ const Index = () => {
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
-          height: 100vh;
+          height: 95vh;
         }
         
         .imageWrapper {
@@ -99,6 +101,7 @@ const Index = () => {
           text-align: center;
           width: 90vw;
           font-size: 2.5rem;
+          margin: 16px 0
         }
 
         @media screen and (max-width: 600px) {
@@ -172,6 +175,7 @@ const Index = () => {
             </ul>
           </div>
         )}
+        {showRecipieLink && <RecipieLink url={food.url} />}
         <Buttons
           hasShoppingList={hasShoppingList}
           showList={showList}
