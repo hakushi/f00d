@@ -7,7 +7,7 @@ const Button = ({ className, disabled = false, handler, text }) => (
           padding: 10px;
           margin: 10px;
           width: 50vw;
-          font-size: 36px;
+          font-size: 2.6rem;
           font-family: lato, verdana;
           cursor: pointer;
           border: 0;
@@ -16,7 +16,13 @@ const Button = ({ className, disabled = false, handler, text }) => (
           background-color: #992680;
           color: #fff;
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 8§00px) {
+          .button {
+            width: 50vw;
+            font-size: 2rem;
+          }
+        }
+        @media screen and (max-width: 400px) {
           .button {
             width: 90vw;
             font-size: 1.5rem;

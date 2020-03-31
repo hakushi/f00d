@@ -16,7 +16,9 @@ export default [
       "krossade tomater",
       "tomatpuré",
       "gul lök",
-      "riven ost"
+      "riven ost",
+      "soltorkade tomater",
+      "mozarella"
     ]
   },
   {
@@ -35,9 +37,59 @@ export default [
     ],
     url: "https://www.koket.se/halloumirarakor-med-avokadosalsa"
   },
-  { name: "Spaghetti & k*ttfärssås", image: "s+k.jpg" },
+  {
+    name: "F*skgratäng",
+    image: "f-skgratang.jpeg",
+    list: [
+      "potatis",
+      "smör",
+      "mjölk",
+      "rapsolja",
+      "muskotnöt",
+      "gul lök",
+      "vitlök",
+      "grädde",
+      "näringsjäst",
+      "citron",
+      "grönsaksfond",
+      "fryst dill",
+      "hård tofu",
+      "nori-blad"
+    ],
+    url:
+      "https://www.awesomevegandad.com/2020/03/12/varldens-godaste-fuskgratang/"
+  },
+  {
+    name: "Spaghetti & k*ttfärssås",
+    image: "s+k.jpg",
+    list: [
+      "spaghetti",
+      "färst",
+      "krossade tomater",
+      "matlagningsgrädde",
+      "vitlök",
+      "gul lök"
+    ]
+  },
   { name: "Quesadillas", image: "quesadillas.jpg" },
-  { name: "Tacos", image: "tacos.jpg" },
+  {
+    name: "Tacos",
+    image: "tacos.jpg",
+    list: [
+      "Tortilla-bröd",
+      "Tomater",
+      "Gurka",
+      "Mango",
+      "Mild chunky salsa",
+      "Taco-krydda",
+      "Quornfärs",
+      "Babyspenat",
+      "Vitlök",
+      "Crème fraîche",
+      "Nachos",
+      "Riven ost"
+    ]
+  },
   {
     name: "Korv Stroganoff",
     image: "korvstroganoff.jpg",
